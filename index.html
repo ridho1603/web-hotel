@@ -21,7 +21,7 @@
       <img src="assets/logo.png" alt="Hotel Logo" class="w-28 mx-auto mb-4 drop-shadow-lg">
       <h1 class="text-5xl font-bold mb-2">Hotel D'Ben</h1>
       <p class="tagline text-3xl text-amber-300 mb-6">Rest, Relax and Joyful</p>
-      <a href="https://www.traveloka.com/id-id/hotel/indonesia/hotel-dben-3000020000214" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg text-lg transition">Pesan Sekarang</a>
+      <button onclick="openModal()" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg text-lg transition">Pesan Sekarang</button>
     </div>
   </section>
 
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-[1.02] transition">
-          <img src="assets/lobby_2.webp" alt="Lobby Hotel" class="h-48 w-full object-cover">
+          <img src="assets/lobby.jpg" alt="Lobby Hotel" class="h-48 w-full object-cover">
           <div class="p-4">
             <h3 class="font-semibold text-xl mb-2">Lobby</h3>
             <p class="text-gray-600">Menyambut Anda dengan hangat sejak pertama kali tiba.</p>
@@ -86,7 +86,7 @@
       <p class="text-lg mb-2"><span class="font-bold text-amber-700">Weekdays:</span> Rp285.000</p>
       <p class="text-lg mb-2"><span class="font-bold text-amber-700">Weekend:</span> Rp300.000</p>
       <p class="text-lg text-gray-600 mb-6"><span class="font-bold">*Deposit Kunci:</span> Rp50.000</p>
-      <a href="https://www.traveloka.com/id-id/hotel/indonesia/hotel-dben-3000020000214" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg text-lg transition">Reservasi Sekarang</a>
+      <button onclick="openModal()" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg text-lg transition">Reservasi Sekarang</button>
     </div>
   </section>
 
@@ -117,6 +117,47 @@
     </div>
     <p class="text-center text-sm text-gray-400 mt-4">&copy; 2025 Hotel D'Ben - Rest, Relax and Joyful</p>
   </footer>
+
+<!-- MODAL -->
+<div id="bookingModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 scale-95 transition-all duration-300">
+  <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 relative">
+    <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
+    <h3 class="text-2xl font-bold mb-4 text-center">Pilih Platform Booking</h3>
+    <div class="flex flex-col space-y-4">
+      <a href="https://www.traveloka.com/id-id/hotel/indonesia/hotel-dben-3000020000214" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg text-center">Booking via Traveloka</a>
+      <a href="https://www.agoda.com/id-id/hotel-d-ben/hotel/purwokerto-id.html?cid=1844104" target="_blank" class="bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-lg text-center">Booking via Agoda</a>
+      <a href="https://www.tiket.com/hotel/indonesia/d-ben-hotel-purwokerto-807001752214119470" target="_blank" class="bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg text-center">Booking via Tiket.com</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    const modal = document.getElementById("bookingModal");
+    modal.classList.remove("hidden");
+    setTimeout(() => {
+      modal.classList.remove("opacity-0", "scale-95");
+      modal.classList.add("opacity-100", "scale-100");
+    }, 10); // delay kecil agar transisi berjalan
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("bookingModal");
+    modal.classList.remove("opacity-100", "scale-100");
+    modal.classList.add("opacity-0", "scale-95");
+    setTimeout(() => {
+      modal.classList.add("hidden");
+    }, 300); // sesuai durasi transition
+  }
+
+  // Tutup modal kalau klik area luar konten
+  document.getElementById("bookingModal").addEventListener("click", function(e) {
+    if (e.target.id === "bookingModal") {
+      closeModal();
+    }
+  });
+</script>
+
 
 </body>
 </html>
